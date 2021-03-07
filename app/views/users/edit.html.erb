@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center rounded px-0 my-5">
+      <h5 class="text-dark bg-light border rounded-lg py-4 mb-0">プロフィール編集</h5>
+      <div class="form-body border rounded-lg ">
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :nickname, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前"%>
+          </div>
+          <%= attachment_image_tag @user, :profile_image, :fill, 160, 160, fallback: ""%>
+          <div class="input-group my-3">
+            <label>
+            <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "w-100" %>
+            </label>
+          </div>
+          <%= f.submit "             変更を保存           ", class:'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

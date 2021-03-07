@@ -9,4 +9,5 @@ class User < ApplicationRecord
          has_many :follows, dependent: :destroy
          has_many :favorites, dependent: :destroy
          validates :nickname, presence: true
+         attachment :profile_image
 end

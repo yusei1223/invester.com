@@ -5,10 +5,12 @@
      <div class="col-md-8">
        
       <div class="d-flex flex-wrap ">
-        <% @articles.each do |t| %>
+        <% @articles.each do |a| %>
           <div class="my-box w-25 border">
-          <%= t.title %><br />
-          <%= t.body %><br />
+          <%= attachment_image_tag a, :image, :fill, 230, 160, fallback: "" %>
+          <%= image_tag('') %>
+          <h3><%= a.title %></h3><br />
+          <h6><%= a.body %></h6><br />
           <%= link_to "詳細", articles_path, class: "btn btn-outline-secondary mt-2" %>
           </div> 
         <% end %>
