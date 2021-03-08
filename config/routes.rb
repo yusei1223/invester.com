@@ -6,4 +6,5 @@ Rails.application.routes.draw do
    get 'top' => 'homes#top'
    resources :users
    resources :articles
+   resources :inquires
 end

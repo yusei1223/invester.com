@@ -3,16 +3,34 @@
   <div class="row">
      <div class="col-md-3"></div>
      <div class="col-md-8">
-       
+         
+      <div class="my-box w-25 border">
+         <ul class="list-group">
+          <li class="list-group-item">Normal item</li>
+          <li class="list-group-item">Active item1</li>
+          <li class="list-group-item">Disabled item2</li>
+        </ul>
+        </div>
+        
       <div class="d-flex flex-wrap ">
-        <% @articles.each do |a| %>
+        <% @articles.each do |article| %>
           <div class="my-box w-25 border">
-          <%= attachment_image_tag a, :image, :fill, 230, 160, fallback: "" %>
-          <%= image_tag('') %>
-          <h3><%= a.title %></h3><br />
-          <h6><%= a.body %></h6><br />
-          <%= link_to "詳細", articles_path, class: "btn btn-outline-secondary mt-2" %>
-          </div> 
+            <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'230x230' %>
+            <%= image_tag('') %>
+           <div class = col-3>
+            <h3><%= article.title %></h3><br />
+            <h6><%= article.body %></h6><br />
+            <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
+           </div>
+              <div class = "border-top" >
+                 <div class = col-3>
+                    <%= attachment_image_tag article.user, :profile_image, fallback: "no_image_icon.jpg", size:'60x60', class:"mt-3 rounded-circle"; %>
+                    <p class= "text-center"><%= article.user.nickname %></p>
+                 </div>
+              </div>
+          </div>
+         
+            
         <% end %>
       </div>
       
@@ -20,3 +38,10 @@
    </div>
   </div>
 </div>
+
+
+
+
+  <div class='col-md-3'>
+      <h2>User info</h2>
+  </div>

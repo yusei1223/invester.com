@@ -1,0 +1,22 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>記事編集</h1>
+    	<%#= render 'layouts/errors', obj: @article %>
+  		<%= form_for @article, url: article_path do |f| %>
+           <h4>イメージ画像</h4>
+           <%#= f.attachment_field :image %>
+             <div class="form-group">
+               <h4>タイトル</h4>
+               <%= f.text_field :title,size: "20x10",class: "form-control" %>
+               <h4>内容</h4>
+               <%= f.text_area :body,size: "30x20", class: "form-control" %>
+             </div>
+             <br>
+            <%= f.submit "       投稿を編集する      ", class:'btn btn-primary'%>
+         <% end %>
+  		<%#= link_to 'Show', article_path(@article), class: "book_#{@book.id}" %> |
+  		<%= link_to 'Back', articles_path, class: "back" %>
+  </div>
+ </div>
+</div>
