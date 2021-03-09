@@ -5,6 +5,9 @@ Rails.application.routes.draw do
    root to: 'articles#index'
    get 'top' => 'homes#top'
    resources :users
-   resources :articles
+   resources :articles do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+   end
    resources :inquires
 end

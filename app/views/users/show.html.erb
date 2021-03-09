@@ -20,26 +20,33 @@
   <div class="row">
      <div class="col-md-3"></div>
      <div class="col-md-8">
-       
-     <div class="d-flex flex-wrap ">
-        <% @articles.each do |a| %>
+        
+      <div class="d-flex flex-wrap ">
+        <% @articles.each do |article| %>
           <div class="my-box w-25 border">
-            <%= attachment_image_tag a, :image, fallback: "no_image.jpg", size:'230x200' %>
+            <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'230x230' %>
             <%= image_tag('') %>
-            <h3><%= a.title %></h3><br />
-            <h6><%= a.body %></h6><br />
-            <%= link_to "詳細", articles_path, class: "btn btn-outline-secondary mt-2" %><br />
-            <div class="col-2">
-            <%= attachment_image_tag a.user, :profile_image, fallback: "no_image.jpg", size:'60x60', class:"mt-3 rounded-circle"; %>
-            </div>
-            <%#= a.user.nickname %>
-          </div> 
+           <div class = col-3>
+            <h3><%= article.title %></h3><br />
+           </div>
+           <div class= col-6>
+            <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
+           </div>
+              <div class = "border-top" >
+                 <div class = col-3>
+                    <%= attachment_image_tag article.user, :profile_image, fallback: "no_image_icon.jpg", size:'60x60', class:"mt-3 rounded-circle"; %>
+                    <p class= "text-center"><%= article.user.nickname %></p>
+                 </div>
+              </div>
+          </div>
+         
+            
         <% end %>
       </div>
       
      </div>  
    </div>
   </div>
-  </div>
-<%= paginate @articles %>
+  <%= paginate @articles %>
 </div>
+

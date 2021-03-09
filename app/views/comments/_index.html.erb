@@ -1,0 +1,14 @@
+<% @article.comments.each do |comment| %>
+  <% comment_user = comment.user %>
+  <tr>
+  	<td>
+    		<%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50",class:"mt-3 rounded-circle"; %>
+    		<%= comment.user.nickname %><br />
+    		<%= comment.body %><br />
+    		<%= comment.created_at.strftime('%Y/%m/%d') %>
+  	</td>
+  	<% if current_user == comment_user %>
+    	<td><%= link_to 'Destroy', article_comment_path(comment.article_id, comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+  	<% end %>
+  </tr>
+<% end %>

@@ -1,17 +1,18 @@
-<div class="container-fluid bg-light py-4">
+<div class="container-fluid bg-light py-5">
  <div class="columns is-multiline">
   <div class="row">
-     <div class="col-md-3"></div>
-     <div class="col-md-8">
-         
-      <div class="my-box w-25 border">
-         <ul class="list-group">
-          <li class="list-group-item">Normal item</li>
-          <li class="list-group-item">Active item1</li>
-          <li class="list-group-item">Disabled item2</li>
-        </ul>
+       
+       <div class='col-md-3'>
+         <div class="my-box w-35 border">
+            <ul class="list-group">
+               <li class="list-group-item">Normal item</li>
+               <li class="list-group-item">Active item1</li>
+               <li class="list-group-item">Disabled item2</li>
+            </ul>
+         </div>
         </div>
-        
+     
+     <div class="col-md-8 offset-md-1">
       <div class="d-flex flex-wrap ">
         <% @articles.each do |article| %>
           <div class="my-box w-25 border">
@@ -19,8 +20,10 @@
             <%= image_tag('') %>
            <div class = col-3>
             <h3><%= article.title %></h3><br />
-            <h6><%= article.body %></h6><br />
+            </div>
+           <div class = col-6>
             <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
+            <p><%= link_to "#{article.comments.count} コメント", article_path(article.id) %></p>
            </div>
               <div class = "border-top" >
                  <div class = col-3>
@@ -42,6 +45,4 @@
 
 
 
-  <div class='col-md-3'>
-      <h2>User info</h2>
-  </div>
+      
