@@ -7,12 +7,14 @@
 <%= form_with model: @article, url:'/articles', local:true do |f| %>
   <h1>新規投稿</h1>
   
-  <h4>イメージ画像</h4>
+  <h5>イメージ画像</h5>
   <%= f.attachment_field :image %>
   <div class="form-group">
-  <h4>タイトル</h4>
+   <h5> <%= f.label :category, 'カテゴリ' %></h5>
+            <%= f.collection_select :category_ids, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+  <h5>タイトル</h5>
   <%= f.text_field :title,size: "20x10",class: "form-control" %>
-  <h4>内容</h4>
+  <h5>内容</h5>
   <%= f.text_area :body,size: "30x20", class: "form-control" %>
   </div>
   <br>

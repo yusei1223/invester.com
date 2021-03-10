@@ -43,6 +43,14 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :body, :image)
+    params.require(:article).permit(:title, :body, :image, category_ids: [])
   end
+  
+  def ensure_correct_user
+    @article = Article.find(params[:id])
+    unless @article.user == current_user
+      redirect_to articles_path
+    end
+  end
+
 end

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def destroy
       @comment = Comment.find(params[:id]) 
     　if @comment.destroy
-      redirect_to  article_path
+      redirect_to  article_path(article)
     　end
   end
   

@@ -7,9 +7,22 @@
   <h1><%= @user.nickname %></h1>
   <% if @user.id == current_user.id %>
     <div class="mt-auto">
+     <%= link_to user_followings_path(@user) do %>
+     <p>フォロー中: <%= @user.followings.count %></p>
+     <% end %>
+     <%= link_to user_followers_path(@user) do %>
+     <p>フォロワー: <%= @user.followers.count %></p>
+     <% end %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary mt-5" %></p>
     </div>
   <% end %>
+  　　　<% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                   <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete,class: "btn btn-outline-secondary mt-5" %>
+                <% else %>
+                   <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn btn-outline-secondary mt-5" %>
+                <% end %>
+       <% end %>
      </div>
    </div>
   </div>
@@ -31,6 +44,7 @@
            </div>
            <div class= col-6>
             <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
+      　　
            </div>
               <div class = "border-top" >
                  <div class = col-3>
