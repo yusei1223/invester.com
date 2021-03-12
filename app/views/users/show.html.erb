@@ -1,4 +1,4 @@
-<div class="container-profile bg-light border py-2">
+<div class="container-profile bg-light border p-2">
  <div class="columns is-multiline">
   <div class="row">
      <div class="col-md-3"></div>
@@ -8,12 +8,12 @@
   <% if @user.id == current_user.id %>
     <div class="mt-auto">
      <%= link_to user_followings_path(@user) do %>
-     <p>フォロー中: <%= @user.followings.count %></p>
+     フォロー中: <%= @user.followings.count %>
      <% end %>
      <%= link_to user_followers_path(@user) do %>
-     <p>フォロワー: <%= @user.followers.count %></p>
+     フォロワー: <%= @user.followers.count %><br />
      <% end %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary mt-5" %></p>
+     <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary mt-3" %>
     </div>
   <% end %>
   　　　<% if current_user != @user %>

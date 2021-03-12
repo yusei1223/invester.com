@@ -27,6 +27,10 @@
       <li><%= link_to "ログイン", new_user_session_path %></li>
     <% end %>
     </ul>
+　　　<%= search_form_for @search, url:articles_path do |f| %>
+　　　<%= f.search_field :title_cont %>
+　　　<%= f.submit "🔍" ,class: 'btn btn-white'%>
+　　　<% end %>
       </div>
     </div>
   </nav>

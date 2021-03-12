@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
+  
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
   end
 
   def index
-    @articles = Article.all  
+    @search_articles = Article.all  
     @article = Article.new
   end
   
@@ -48,7 +49,7 @@ class ArticlesController < ApplicationController
   end
   
   def ensure_correct_user
-    @article = Article.find(params[:id])
+      @article = Article.find(params[:id])
     unless @article.user == current_user
       redirect_to articles_path
     end
