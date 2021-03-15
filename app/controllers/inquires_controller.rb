@@ -1,2 +1,27 @@
 class InquiresController < ApplicationController
+
+  def index
+  end
+  
+  def new
+    @inquire = Inquire.new
+  end
+
+  def create
+    @inquire = Inquire.new(inquire_params)
+    if @inquire.save
+      ContactMailer.contact_mail(@inquire).deliver
+      flash[:success] = 'お問い合わせを受け付けました'
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def inquire_params
+    params.require(:inquire).permit(:email, :body ,:nickname)
+  end
+
 end

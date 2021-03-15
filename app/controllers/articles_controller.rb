@@ -6,7 +6,11 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    if params[:q]
+    @search_articles = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(5)
+    else
     @search_articles = Article.all  
+    end
     @article = Article.new
   end
   
@@ -45,7 +49,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :body, :image, category_ids: [])
+    params.require(:article).permit(:title, :body, :image, :category_ids)
   end
   
   def ensure_correct_user

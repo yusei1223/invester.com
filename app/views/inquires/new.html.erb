@@ -1,0 +1,29 @@
+<div class="container-fluid bg-light p-5">
+ <div class="columns is-multiline">
+<div class= col-md-3>
+<h4>✉ メールでのお問い合わせ</h4>
+</div>
+<%= form_for @inquire do |f| %>
+
+<div class="form-group col-md-3">
+    <%= f.label :nickname, 'あなたのニックネームを入力してください' %>
+    <%= f.text_field :nickname, class: 'form-control' %>
+  </div>
+ 
+  <div class="form-group col-md-6">
+    <%= f.label :email, '返信先メールアドレスを入力してください' %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+
+ <div class="form-group col-md-6">
+   <%= f.label :body, 'お問い合わせ内容を入力してください' %>
+   <%= f.text_area :body, size: '10x10', class: 'form-control' %>
+ </div>
+<div class= "col-md-3">
+  <%= f.submit '         送信         ',class:'btn btn-primary' %>
+</div>
+<% end %>
+
+      </div>
+   </div>
+</div>
