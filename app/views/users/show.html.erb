@@ -1,42 +1,36 @@
 <div class="container-profile bg-light border p-2">
  <div class="columns is-multiline">
   <div class="row">
-     <div class="col-md-3"></div>
-     <div class="col-md-8">
+   <div class="col-md-4"></div>
+  <div class="col-md-3">
   <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'140x140', class:"rounded-circle"; %>
   <h1><%= @user.nickname %></h1>
-  <% if @user.id == current_user.id %>
- 　　　　　　　<div class="mt-auto">
-  　　　　　　　　　　　   <%= link_to user_followings_path(@user) do %>
-    　　　　　　　　　　 フォロー中: <%= @user.followings.count %>
-     　　　<% end %>
-     <%= link_to user_followers_path(@user) do %>
-     フォロワー: <%= @user.followers.count %><br />
-     <% end %>
-     <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary mt-3" %>
-    </div>
+  <%= link_to user_followings_path(@user) do %>
+　<%= @user.followings.count %>フォロー
   <% end %>
-  
-  　<% if current_user != @user %>
-  　　  　 <div class="mt-auto">
-               <% if current_user.following?(@user) %>
-                   <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "btn btn-outline-secondary mt-3" %>
-                <% else %>
-                   <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn btn-outline-secondary mt-3" %>
-                <% end %>
-               <%= link_to user_followings_path(@user) do %>
-               フォロー中: <%= @user.followings.count %>
-               <% end %>
-               <%= link_to user_followers_path(@user) do %>
-               フォロワー: <%= @user.followers.count %><br />
-               <% end %>
-          </div>
-       <% end %>
+  <%= link_to user_followers_path(@user) do %>
+  <%= @user.followers.count %>フォロワー<br />
+  <% end %>
+
+
+         <% if @user.id == current_user.id %>
+                       <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary md-6" %>
+         <% end %>
+
+  　      <% if current_user != @user %>
+
+         <% if current_user.following?(@user) %>
+         <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "btn btn-outline-secondary mt-3" %>
+         <% else %>
+         <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn btn-outline-secondary mt-3" %>
+         <% end %>
+         <% end %>
+         </div>
      </div>
    </div>
   </div>
- </div>
- 
+
+
 <div class="container-fluid bg-light py-4">
  <div class="columns is-multiline">
   <div class="row">
@@ -59,12 +53,10 @@
           </div>
               </div>
           </div>
-         
-            
         <% end %>
       </div>
-      
-     </div>  
+
+     </div>
    </div>
   </div>
   <%= paginate @articles %>

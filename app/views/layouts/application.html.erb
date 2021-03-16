@@ -9,7 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class='fixed-top'>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e3f2fd;">
     <div class="container">
       <a class="navbar-brand" href="/"><span>インベスター.com</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +20,7 @@
     <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
       <li><%= link_to "投稿する", new_article_path %></li>
+      <li><%= link_to "通知", notifications_path %></li>
       <li><%= link_to "マイページ", user_path(current_user.id) %></li>
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <li><%= link_to "ヘルプ", inquires_path %></li>
@@ -26,17 +28,19 @@
       <li><%= link_to "新規登録", new_user_registration_path %></li>
       <li><%= link_to "ログイン", new_user_session_path %></li>
     <% end %>
-    </ul>
+     </ul>
 　　　<%= search_form_for @search, url:articles_path do |f| %>
 　　　<%= f.search_field :title_cont %>
 　　　<%= f.submit "🔍" ,class: 'btn btn-white'%>
 　　　<% end %>
+
       </div>
     </div>
   </nav>
+</div>
 </header>
-    
-  
+
+
   <body>
     <%= yield %>
   </body>

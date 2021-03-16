@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_161252) do
+ActiveRecord::Schema.define(version: 2021_03_16_022126) do
 
   create_table "article_categories", force: :cascade do |t|
     t.integer "article_id"
@@ -57,6 +57,21 @@ ActiveRecord::Schema.define(version: 2021_03_09_161252) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "article_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_notifications_on_article_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "relationships", force: :cascade do |t|

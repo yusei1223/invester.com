@@ -1,10 +1,11 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @article = Article.find(params[:article_id])
     favorite = @article.favorites.new(user_id: current_user.id)
     favorite.save
+    @article.create_notification_favorite!(current_user)
   end
 
   def destroy
