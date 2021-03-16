@@ -20,13 +20,13 @@
         <% if notification.article.user_id == visited.id %>
           <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
           <%= "にコメントしました" %>
+          <%= notification.comment.body %>
         <% else %>
 　　　　　<%= link_to article_path(notification.article) do %>
     　　　　<%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
 　　　　　<%= notification.article.user.nickname + 'さんの投稿' %>
-            <% end %>
+        <% end %>
        　　<%= "にコメントしました" %>
-
           <%= notification.comment.body %>
         <% end %>
     <% end %>

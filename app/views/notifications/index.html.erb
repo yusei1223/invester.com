@@ -1,3 +1,8 @@
+<div class="container-fluid bg-light py-5">
+  <div class="columns is-multiline">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
 <% if notifications.exists? %>
@@ -6,3 +11,8 @@
 <% else %>
   <h4>通知はありません</h4>
 <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
