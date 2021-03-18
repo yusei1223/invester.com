@@ -5,10 +5,12 @@ class ContactMailer < ApplicationMailer
   #
   #   en.contact_mailer.contact_mail.subject
   #
-    
-  def contact_mail(inquire)
+  def send_mail(inquire)
     @inquire = inquire
-    mail to: ENV['toy.yu.63@gmail.com'], subject: "メールのタイトル"
+    mail(
+      from: 'system@example.com',
+      to:   'toy.yu.63@gmail.com',
+      subject: 'お問い合わせ通知'
+    )
   end
-
 end

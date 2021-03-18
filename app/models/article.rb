@@ -1,16 +1,19 @@
 class Article < ApplicationRecord
     belongs_to :user, optional: true
+    has_many :article_tags
+    has_many :tags, through: :article_tags
     has_many :favorites, dependent: :destroy
+    has_many :bookmarks, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :article_categories
     has_many :categories, through: :article_categories
     has_many :notifications, dependent: :destroy
     attachment :image
-   
+
     def favorited_by?(user)
       favorites.where(user_id: user.id).exists?
     end
-    
+
     def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and article_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
@@ -28,7 +31,7 @@ class Article < ApplicationRecord
       notification.save if notification.valid?
     end
     end
-    
+
     def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct

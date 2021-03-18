@@ -1,0 +1,6 @@
+<div id="<%= @article.id %> bookmark"></div>
+  <% if !Bookmark.exists?(user: current_user, article_id: @article.id) %>
+    <%= link_to "ブックマークに登録する", article_bookmarks_path(@article), method: :post, remote: true, class: "btn btn-outline-secondary md-6" %>
+  <% else %>
+     <%= link_to "ブックマークから外す", article_bookmarks_path(@article), method: :delete, remote: true, class: "btn btn-outline-secondary md-6" %>
+  <% end %>

@@ -5,5 +5,5 @@
           <%= link_to article.favorites.count, article_favorites_path(article), method: :post, remote: true, class: "fas fa-heart" %>
      <% end %>
 <% else %>
-   <%= article.favorites.count %>
+     <%= link_to article.favorites.count, article_favorites_path(article), method: :post, remote: true, class: "fas fa-heart" %>
 <% end %>

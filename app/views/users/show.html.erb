@@ -1,28 +1,26 @@
-<div class="container-profile bg-light border p-2">
+<div class="container-profile bg-light border pt-5">
  <div class="columns is-multiline">
   <div class="row">
    <div class="col-md-4"></div>
   <div class="col-md-3">
   <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'140x140', class:"rounded-circle"; %>
-  <h1><%= @user.nickname %></h1>
+  <h2><%= @user.nickname %></h2>
+  <div class="flex-row">
   <%= link_to user_followings_path(@user) do %>
-　<%= @user.followings.count %>フォロー
+　<h6><%= @user.followings.count %>フォロー</h6>
   <% end %>
   <%= link_to user_followers_path(@user) do %>
-  <%= @user.followers.count %>フォロワー<br />
+  <h6><%= @user.followers.count %>フォロワー</h6>
   <% end %>
-
-
+  </div>
          <% if @user.id == current_user.id %>
-                       <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary md-6" %>
+         <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary" %>
          <% end %>
-
   　      <% if current_user != @user %>
-
          <% if current_user.following?(@user) %>
-         <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "btn btn-outline-secondary mt-3" %>
+         <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "btn btn-outline-secondary" %>
          <% else %>
-         <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn btn-outline-secondary mt-3" %>
+         <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn btn-outline-secondary" %>
          <% end %>
          <% end %>
          </div>
@@ -46,8 +44,8 @@
             <p><%= article.title %></p><br />
             </div>
            <div class = col-6>
-            <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
-            <p><%= link_to "#{article.comments.count} コメント", article_path(article.id) %></p>
+           <%= link_to "      詳細      ", article_path(article), class: "btn btn-outline-secondary" %><br />
+           <%= link_to "#{article.comments.count}", article_path(article.id),class: "fas fa-comment" %>
             <div id="favorites_buttons_<%= article.id %>">
                       <%= render "favorites/favorite", article: article %>
           </div>

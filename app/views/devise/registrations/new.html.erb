@@ -4,7 +4,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+<div class="my-box w-100 border p-4">
 <p class="text-center">
   <font size="4">ようこそ!  インベスター.comへ</font>
 </p>
@@ -37,6 +37,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
+    </div>
   </div>
 </div>

@@ -10,9 +10,9 @@
   </head>
   <header>
     <div class='fixed-top'>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3" style="background-color:#2F4F4F;">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>インベスター.com</span></a>
+      <a class="navbar-brand" href="/"><h3>Invester.com</h3></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,8 +31,19 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <li class="nav-item px-2"><%= link_to "", new_article_path,class: "fas fa-pencil-alt fa-2x" %></li>
-      <li class="nav-item px-2"><%= link_to "", notifications_path,class: "far fa-bell fa-2x" %></li>
+      <li class="nav-item px-2" data-toggle="tooltip" title="分析記事を投稿しよう！">
+        <%= link_to "", new_article_path,class: "fas fa-pencil-alt fa-2x" %>
+      </li>
+    <%= link_to notifications_path, method: :get do %>
+      <% if unchecked_notifications.any? %>
+           <span class="fa stack">
+             <i class="far fa-bell fa-2x"></i>
+             <i class="fas fa-exclamation-circle n-circle fa-stack-1x"></i>
+           </span>
+      <% else %>
+       <li class="nav-item px-2"><%= link_to "", notifications_path,class: "far fa-bell fa-2x" %></li>
+      <% end %>
+    <% end %>
       <li class="dropdown px-2">
         <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span class="caret">
@@ -40,7 +51,8 @@
           </span>
         </div>
           <ul class="dropdown-menu">
-            <li class="text-center"><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <li class="text-center"><%= link_to "My page", user_path(current_user.id) %></li>
+            <li class="text-center"><%= link_to "ブックマーク一覧", bookmarks_users_path %></li>
             <li class="text-center"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <li class="text-center"><%= link_to "ヘルプ", inquires_path %></li>
             <li role="separator" class="divider"></li>

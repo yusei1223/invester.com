@@ -2,7 +2,7 @@ class InquiresController < ApplicationController
 
   def index
   end
-  
+
   def new
     @inquire = Inquire.new
   end
@@ -10,7 +10,7 @@ class InquiresController < ApplicationController
   def create
     @inquire = Inquire.new(inquire_params)
     if @inquire.save
-      ContactMailer.contact_mail(@inquire).deliver
+      ContactMailer.send_mail(@inquire).deliver
       flash[:success] = 'お問い合わせを受け付けました'
       redirect_to root_path
     else
