@@ -4,14 +4,13 @@ class Article < ApplicationRecord
     has_many :tags, through: :article_tags
     has_many :favorites, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
-    has_many :bookmark_articles, through: :bookmarks, source: :article
     has_many :comments, dependent: :destroy
     has_many :article_categories
     has_many :categories, through: :article_categories
     has_many :notifications, dependent: :destroy
     attachment :image
 
-    def bookmark_by?(user)
+    def bookmarked_by?(user)
       bookmarks.where(user_id: user.id).exists?
     end
 

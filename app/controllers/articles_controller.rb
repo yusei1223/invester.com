@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def bookmarks
-   @board = current_user.bookmark_articles.includes(:user).order(created_at: :desc)
+    @bookmarks = Bookmark.where(user_id: current_user.id)
   end
 
   def ranks
@@ -11,8 +11,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
-    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:article_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @Bookmark_list = Article.find(bookmarks)     # postsテーブルから、お気に入り登録済みのレコードを取得
   end
 
   def index

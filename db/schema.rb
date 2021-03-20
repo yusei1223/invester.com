@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_180538) do
+ActiveRecord::Schema.define(version: 2021_03_20_031445) do
 
   create_table "article_categories", force: :cascade do |t|
     t.integer "article_id"
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(version: 2021_03_17_180538) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|

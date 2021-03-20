@@ -1,15 +1,17 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
 
-def create
-  @bookmark = current_user.bookmarks.build(article_id: params[:id])
-  @bookmark.save!
-  redirect_back fallback_location: root_path, success: t('defaults.message.bookmark')
-end
+ def create
+  @article = Article.find(params[:article_id])
+  bookmark = @article.bookmarks.new(user_id: current_user.id)
+  bookmark.save
+ end
 
-def destroy
-  current_user.bookmarks.find_by(article_id: params[:id].destroy!)
-  redirect_back fallback_location: root_path, success: t('defaults.message.not_bookmark')
-end
+ def destroy
+  @article= Article.find(params[:article_id])
+  bookmark = @article.bookmarks.find_by(user_id: current_user.id)
+  # byebug
+  bookmark.destroy
+ end
 
 end

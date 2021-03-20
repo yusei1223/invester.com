@@ -1,5 +1,5 @@
-      <div class="col-md-12">
-      <div class="d-flex flex-wrap ">
+<div class="col-md-12">
+  <div class="d-flex flex-wrap ">
     <% users.each do |user| %>
        <div class="w-100 my-box border p-4">
         <%= link_to  user_path(user), class: "user_#{user.id}" do%>
@@ -16,4 +16,4 @@
       </div>
     <% end %>
   </div>
-  </div>
+</div>

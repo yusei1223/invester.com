@@ -70,6 +70,9 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'omniauth','1.9.1'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 group :production do
   gem 'mysql2'
 end
