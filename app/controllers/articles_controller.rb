@@ -1,5 +1,13 @@
 class ArticlesController < ApplicationController
 
+  def bookmarks
+   @board = current_user.bookmark_articles.includes(:user).order(created_at: :desc)
+  end
+
+  def ranks
+    @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
+  end
+
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
@@ -8,7 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-   #seach時にifで検索結果を表示させそうでないならelseを返し、全ての投稿を表示させる。
+   #seach時にifで検索結果を表示させそうでないなら、全ての投稿を表示させる。
     if params[:q]
     @search_articles = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(5)
     else

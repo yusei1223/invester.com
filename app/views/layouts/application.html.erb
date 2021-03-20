@@ -31,36 +31,47 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <li class="nav-item px-2" data-toggle="tooltip" title="分析記事を投稿しよう！">
-        <%= link_to "", new_article_path,class: "fas fa-pencil-alt fa-2x" %>
-      </li>
+    <%= link_to  new_article_path, method: :get do %>
+      <li class="nav-item px-3" data-toggle="tooltip" title="分析記事を投稿しよう！">
+        <i class="fas fa-pencil-alt fa-2x" style="color:gainsboro;"></i>
+        </li>
+    <% end %>
+<li class="nav-item px-3">
     <%= link_to notifications_path, method: :get do %>
       <% if unchecked_notifications.any? %>
            <span class="fa stack">
-             <i class="far fa-bell fa-2x"></i>
+             <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
              <i class="fas fa-exclamation-circle n-circle fa-stack-1x"></i>
            </span>
       <% else %>
-       <li class="nav-item px-2"><%= link_to "", notifications_path,class: "far fa-bell fa-2x" %></li>
+             <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
       <% end %>
     <% end %>
-      <li class="dropdown px-2">
+
+      <li class="nav-item px-3">
+        <%= link_to ranks_articles_path, method: :get do %>
+        <i class="fas fa-crown fa-2x" style="color:gainsboro;"></i>
+        <% end %>
+      </li>
+      <li class="dropdown px-3">
         <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span class="caret">
-             <i class="fas fa-smile-wink fa-2x smile-wink-red"></i>
+             <i class="fas fa-smile-wink fa-2x" style="color:gainsboro;"></i>
           </span>
         </div>
           <ul class="dropdown-menu">
-            <li class="text-center"><%= link_to "My page", user_path(current_user.id) %></li>
-            <li class="text-center"><%= link_to "ブックマーク一覧", bookmarks_users_path %></li>
-            <li class="text-center"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li class="text-center"><%= link_to "ヘルプ", inquires_path %></li>
+            <li class="dropdown-item"><font size="2"><%= link_to "マイページ", user_path(current_user.id) %></font></li>
+            <li class="dropdown-item"><font size="2"><%= link_to "ブックマーク一覧", bookmarks_articles_path, method: :get %></font></li>
+            <li class="dropdown-item"><font size="2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></font></li>
+            <div class="dropdown-divider"></div>
+            <li class="dropdown-item"><font size="2"><%= link_to "ヘルプ", inquires_path %></font></li>
             <li role="separator" class="divider"></li>
           </ul>
       </li>
     <% else %>
-      <li><%= link_to "新規登録", new_user_registration_path %></li>
-      <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li class="nav-item px-2"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %></li>
+      <li class="nav-item px-2"><%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %></li>
+      <li class="nav-item px-2"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-secondary" %></li>
     <% end %>
      </ul>
 

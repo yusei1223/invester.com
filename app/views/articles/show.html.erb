@@ -25,10 +25,11 @@
           <% if @article.user == current_user %>
             <%= link_to '記事を編集する', edit_article_path(@article), class: "btn btn-sm btn-success edit_article_#{@article.id}" %>
             <%= link_to '記事を削除する', article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
+          <% else %>
+            <div id="bookmark_<%= @article.id %>">
+              <%= render partial: 'bookmarks/bookmark_area', locals: {bookmarks: @bookmarks } %>
+            </div>
           <% end %>
-          <div id="bookmark_<%= @article.id %>">
-            <%= render partial: 'bookmarks/bookmark', locals: {bookmarks: @bookmarks } %>
-          </div>
       </table>
       <table id="article_<%= @article.id %>">
         <div class="comments">

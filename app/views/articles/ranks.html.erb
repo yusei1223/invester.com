@@ -1,0 +1,22 @@
+<div class="container-fluid bg-light p-5">
+ <div class="columns is-multiline">
+  <div class="row">
+   <div class="col-md-10 offset-md-1">
+
+
+<% @all_ranks.each.with_index(1) do |article, i| %>
+
+<div class="card shadow-lg p-5">
+    第
+   <%= i %>
+    位
+  <%= article.user.nickname %>さん
+  <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'250x200' %>
+  <h1><% article.title %></h1>
+</div>
+
+<% end %>
+</div>
+　　</div>
+　</div>
+</div>
