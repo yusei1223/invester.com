@@ -21,7 +21,7 @@
 
       <%= search_form_for @search, url:articles_path do |f| %>
      <div class="input-group mb-6 px-2">
-            <%= f.search_field :title_cont, autofocus: true, class:"form-control", id:"inputName", placeholder:"キーワードで検索"%>
+            <%= f.search_field :title_or_body_or_categories_name_cont, autofocus: true, class:"form-control", id:"inputName", placeholder:"キーワードで検索"%>
           <div class="input-group-append">
              <%= f.button :type => "submit", style: 'border-style: none;' do %>
              <i class='fas fa-search'></i>
@@ -81,9 +81,11 @@
      </nav>
    </div>
 </header>
-
-
   <body>
     <%= yield %>
   </body>
+  <div class="footer p-3" style="background-color:#2F4F4F;">
+    <div class="container p-3">
+    </div>
+  </div>
 </html>
