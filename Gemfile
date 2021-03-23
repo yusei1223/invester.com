@@ -73,6 +73,7 @@ gem 'dotenv-rails'
 gem 'omniauth','1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end

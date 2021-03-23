@@ -1,19 +1,25 @@
-<div class="container-profile bg-light border pt-5">
- <div class="columns is-multiline">
-  <div class="row">
-   <div class="col-md-4"></div>
-  <div class="col-md-3">
-  <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'140x140', class:"rounded-circle"; %>
-  <h2><%= @user.nickname %></h2>
-  <div class="flex-row">
-  <%= link_to user_followings_path(@user) do %>
-　<h6><%= @user.followings.count %>フォロー</h6>
-  <% end %>
-  <%= link_to user_followers_path(@user) do %>
-  <h6><%= @user.followers.count %>フォロワー</h6>
-  <% end %>
-  </div>
-         <% if @user.id == current_user.id %>
+<div class="container">
+
+    <!-- Heading Row -->
+    <div class="row align-items-center pt-5">
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'250x250', class:"rounded-circle"; %>
+      </div>
+      <!-- /.col-lg-8 -->
+      <div class="col-md-4">
+        <h1 class="font-weight-light"><%= @user.nickname %></h1>
+        <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+        <div class="row px-3">
+          <%= link_to user_followings_path(@user) do %>
+          <h6><%= @user.followings.count %>フォロー</h6>
+          <% end %>
+          <%= link_to user_followers_path(@user) do %>
+          <h6><%= @user.followers.count %>フォロワー</h6>
+          <% end %>
+        </div>
+        <a>
+          <% if @user.id == current_user.id %>
          <%= link_to "プロフィール編集", edit_user_path(@user), class: "fas fa-cog btn btn-outline-secondary" %>
          <% end %>
   　      <% if current_user != @user %>
@@ -23,40 +29,44 @@
          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "fas fa-user-plus btn btn-outline-secondary" %>
          <% end %>
          <% end %>
-         </div>
-     </div>
-   </div>
-  </div>
-
-
-<div class="container-fluid bg-light py-4">
- <div class="columns is-multiline">
-  <div class="row">
-     <div class="col-md-2"></div>
-     <div class="col-md-8">
-
-      <div class="d-flex ustify-content-around flex-wrap">
-        <% @articles.each do |article| %>
-        <%= link_to article_path(article) do %>
-          <div class="my-box w-50 border">
-            <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'463x300' %>
-            <%= image_tag('') %>
-           <div class = col-12>
-            <p><%= article.title %></p><br />
-            <% end %>
-            </div>
-           <div class = col-6>
-           <%= link_to "#{article.comments.count}", article_path(article.id),class: "fas fa-comment" %>
-            <div id="favorites_buttons_<%= article.id %>">
-                      <%= render "favorites/favorite", article: article %>
-          </div>
-              </div>
-          </div>
-        <% end %>
+        </a>
       </div>
-
-     </div>
-   </div>
+      <div class="col-md-2"></div>
+      <!-- /.col-md-4 -->
+    </div>
+    <hr>
+<div class="container pt-1 pb-5">
+    <%= sort_link(@search, :updated_at, "作成日") %>
+  <div class="row">
+      <% @articles.each do |article| %>
+    <div class="col-lg-4 col-sm-6 mb-4">
+      <div class="card h-100">
+             <%= link_to article_path(article) do %>
+             <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'325x230', class:"rounded"; %>
+             <%= image_tag('') %>
+          <h4 class="card-title">
+             <%= article.title %>
+          </h4>
+             <% end %>
+          <p class="card-text">
+             <%= article.body %>
+          </p>
+          <div class="card-footer">
+                            <%= link_to user_path(article.user) do %>
+                                  <%= attachment_image_tag article.user, :profile_image, fallback: "no_image_icon.jpg", size:'50x50', class:"mt-3 rounded-circle";%>
+                                  <%= article.user.nickname %>
+                            <% end %>
+                            <div class="row col-lg-6">
+                                <div>
+                                    <%= link_to "#{article.comments.count}", article_path(article.id), class: "fas fa-comment" %>
+                                </div>
+                                <div id="favorites_buttons_<%= article.id %>">
+                                    <%= render "favorites/favorite", article: article %>
+                                </div>
+                            </div>
+          </div>
+      </div>
+    </div>
+    <%end%>
+    <%= paginate @articles %>
   </div>
-  <%= paginate @articles %>
-</div>

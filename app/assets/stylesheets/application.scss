@@ -22,3 +22,23 @@ body{
   padding-top: 60px
 }
 
+footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;
+    bottom: 0;
+}
+.swiper-container {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+
+}

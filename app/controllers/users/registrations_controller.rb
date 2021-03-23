@@ -8,4 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
      # @user = User.create(nickname:session[:nickname], email: session[:email], password: session[:password], password_confirmation: session[:password_confirmation]
     #end
 
+ def after_sign_up_path_for(resource)
+      articles_path(resource)
+ end
+
 end

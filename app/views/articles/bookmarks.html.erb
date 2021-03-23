@@ -1,24 +1,29 @@
-<div class="container-fluid bg-light py-5">
- <div class="columns is-multiline">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-    <% @bookmarks.each do |bookmark| %>
-       <div class="w-100 my-box border p-4">
-        <%= link_to article_path(bookmark), method: :get do %>
-        <%= attachment_image_tag bookmark.user, :profile_image, :fill, 90, 90, fallback: "no_image_icon.jpg",size:'90x90',class:"rounded-circle";%>
-        <%= bookmark.article.user.nickname %>
-        <% end %>
-        <%= bookmark.article.title %>
-          <%# if current_user != bookmark.article.user %>
-            <%# if bookmark.article.bookmarked_by?(current_user) %>
-              <%#= link_to "ブックマークから外す", article_bookmarks_path(article), method: :delete, remote: true, class: "btn btn-outline-secondary md-6" %>
-            <%# else %>
-              <%#= link_to "ブックマークに登録する", article_bookmarks_path(article), method: :post, remote: true, class: "btn btn-outline-secondary md-6" %>
-            <%# end %>
-          <%# end %>
-      </div>
-    <% end %>
+<div class="container">
+      <!-- Page Heading -->
+      <h1 class="my-4">Page Heading
+        <small>Secondary Text</small>
+      </h1>
+      <hr>
+      <!-- Project One -->
+      <% @bookmarks.each do |bookmark| %>
+      <div class="row">
+        <%= link_to article_path(bookmark) do %>
+        <div class="col-md-6">
+            <%= attachment_image_tag bookmark.article, :image, fallback: "no_image.jpg", size:'500x280', class:"rounded"; %>
         </div>
-     </div>
-  </div>
+        <%end%>
+        <div class="col-md-5">
+          <h3><%= bookmark.article.title %></h3>
+          <p><%= bookmark.article.body%></p>
+          <p class="pt-5">
+            <%= attachment_image_tag bookmark.user, :profile_image, :fill, 60, 60, fallback: "no_image_icon.jpg",size:'60x60',class:"rounded-circle";%>
+            <%= bookmark.article.user.nickname %>
+          </p>
+          <p class="pt-4">
+              <%= render partial: 'articles/bookmark_area', locals: {bookmarks: @bookmarks } %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+      <hr>
 </div>

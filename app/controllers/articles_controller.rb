@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
 
   def bookmarks
     @bookmarks = Bookmark.where(user_id: current_user.id)
@@ -16,11 +17,11 @@ class ArticlesController < ApplicationController
   def index
    #seach時にifで検索結果を表示させそうでないなら、全ての投稿を表示させる。
     if params[:q]
-    @search_articles = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(5)
+      @search_articles = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(9)
     else
-    @search_articles = Article.all
+      @search_articles = Article.all.page(params[:page]).per(9)
     end
-    @article = Article.new
+      @newarticles = Article.all.order(created_at: :desc).limit(10)
   end
 
   def new
@@ -66,6 +67,10 @@ class ArticlesController < ApplicationController
     unless @article.user == current_user
       redirect_to articles_path
     end
+  end
+
+  def sort_params
+      params.permit(:sort)
   end
 
 end

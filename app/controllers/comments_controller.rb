@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @article = Article.find(params[:article_id])
     #byebug
@@ -9,6 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
   end
