@@ -4,7 +4,7 @@
 
 <%= form_with model: @article, url:'/articles', local:true do |f| %>
   <h1>新規投稿</h1>
-  
+
   <h5>イメージ画像</h5>
   <%= f.attachment_field :image %>
   <div class="form-group">
@@ -15,10 +15,10 @@
   <h5>タイトル</h5>
   <%= f.text_field :title,size: "20x10",class: "form-control" %>
   <h5>内容</h5>
-  <%= f.text_area :body,size: "30x20", class: "form-control" %>
+  <%= f.text_area :body,size: "30x20", class:"form-control" %>
   </div>
   <br>
-  <%= f.submit "       投稿する      ", class:'btn btn-primary'%>
+  <%= f.submit "       投稿する      ", class:"btn btn-primary"%>
 <% end %>
 
    </div>

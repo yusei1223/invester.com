@@ -5,10 +5,6 @@ class ArticlesController < ApplicationController
     @bookmarks = Bookmark.where(user_id: current_user.id)
   end
 
-  def ranks
-    @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
-  end
-
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new
@@ -22,6 +18,7 @@ class ArticlesController < ApplicationController
       @search_articles = Article.all.page(params[:page]).per(9)
     end
       @newarticles = Article.all.order(created_at: :desc).limit(10)
+      @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
   end
 
   def new

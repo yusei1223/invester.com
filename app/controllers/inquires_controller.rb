@@ -12,7 +12,7 @@ class InquiresController < ApplicationController
     if @inquire.save
       ContactMailer.send_mail(@inquire).deliver
       flash[:success] = 'お問い合わせを受け付けました'
-      redirect_to root_path
+      redirect_to inquires_path
     else
       render :new
     end

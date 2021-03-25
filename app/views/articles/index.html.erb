@@ -1,33 +1,49 @@
-<div class="container px-5 pb-5">
-　<h4 class="pt-3">New！</h4>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <% @newarticles.each do |article| %>
-      <div class="swiper-slide">
-        <%= link_to article_path(article) do %>
-        <%= attachment_image_tag article, :image, fallback: "no_image.jpg",size:'300x230', class:"rounded"; %>
-        <%= article.title %>
-        <% end %>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-8">
+　  <h4 class="pt-5">New！</h4>
+        <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <% @newarticles.each do |article| %>
+             <div class="swiper-slide">
+             <%= link_to article_path(article) do %>
+             <%= attachment_image_tag article, :image, fallback: "no_image.png",size:"323x230", class:"rounded"; %>
+             <%= article.title %>
+             <% end %>
+             </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
+           <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+       </div>
+      </div>
+
+   <div class="col-md-4">
+      <div class="rank" >
+         <div class="card my-4">
+         <% @all_ranks.each.with_index(1) do |article, i| %>
+         <h5 class="card-header">
+         第 <%= i %> 位
+         <%= article.user.nickname %>さん
+         </h5>
+            <div class="card shadow-lg">
+              <%= attachment_image_tag article, :image, fallback: "no_image.png",size:'75x75', class:"rounded"; %>
+　          </div>
+         <% end %>
+         </div>
+      </div>
+   </div>
+
+　</div>
+<div class="container pb-5">
   <hr>
-  <div class= "btn btn-outline-secondary">
-    <%= link_to '米国株式',{:controller=>"articles",:action=>"index",:q=>{:category=>'米国株式'}}%>
-  </div>
-  <div class= "btn btn-outline-secondary">
-    <%= link_to '日本株式',{:controller=>"articles",:action=>"index",:q=>{:category=>'日本株式'}}%>
-  </div>
     <%= sort_link(@search, :updated_at, "作成日") %>
   <div class="row">
      <% @search_articles.each do |article| %>
     <div class="col-lg-4 col-sm-6 mb-4">
       <div class="card h-100">
              <%= link_to article_path(article) do %>
-             <%= attachment_image_tag article, :image, fallback: "no_image.jpg", size:'325x230', class:"rounded"; %>
+             <%= attachment_image_tag article, :image,:fill, 348,230, fallback: "no_image.png", class:"rounded"; %>
              <%= image_tag('') %>
           <h4 class="card-title">
              <%= article.title %>
@@ -56,3 +72,4 @@
   </div>
 
 <%= paginate @search_articles %>
+</div>

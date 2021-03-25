@@ -42,7 +42,6 @@ h6 {
   color: rgba(255, 255, 255, 0.7);
 }
 
-
 .scroll-to-top:hover {
   background: #343a40;
 }
@@ -72,6 +71,7 @@ h6 {
   padding: 0;
 
 }
+
 @media (min-width: 992px) {
   .masthead {
     height: 90vh;
@@ -82,7 +82,7 @@ h6 {
 }
 
 .service-icon {
-  background-color: #fff;
+  background-color: #ced9db;
   color: #1D809F;
   height: 7rem;
   width: 7rem;
@@ -112,4 +112,16 @@ a:hover, a:focus, a:active {
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: #ba9106 !important;
   border-color: #ba9106 !important;
+}
+
+.bg-primary {
+  background-color: #1D809F !important;
+}
+
+.text-primary {
+  color: #1D809F !important;
+}
+
+.text-secondary {
+  color: #ecb807 !important;
 }

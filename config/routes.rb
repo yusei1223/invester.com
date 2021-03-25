@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
    end
    resources :inquires
-   resources :notifications, only: :index
+   resources :notifications, only: [:index] do
+       get :check, on: :collection
+   end
 end

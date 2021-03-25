@@ -1,47 +1,59 @@
-<div class='container p-4'>
-  <div class='row'>
-    <div class='col-md-10 offset-md-1'>
-  		<h2>投稿記事詳細画面</h2><br />
-  		<table class='table'>
-  		  <tr>
-          <th>
-          <% @article.categories.each do |category| %>
-          【カテゴリー】<%= category.name %>
-          <% end %>
-          </th>
-  		    <tr>
-              <td style="font-size : 30px;"><%= @article.title %></td>
-          </tr>
-          <th>
-  		      <%= link_to user_path(@article.user) do %>
+  <div class="container p-5">
+    <div class="row">
+      <div class="col-md-10">
+        <h1 class="mt-4"><%= @article.title %></h1>
+        <p class="lead">
+          <a>
+            <%= link_to user_path(@article.user) do %>
             <%= attachment_image_tag @article.user, :profile_image, fallback: "no_image_icon.jpg", size:'40x40', class:"mt-3 rounded-circle";%>
             <%= @article.user.nickname %>
             <% end %>
-            <p><%= @article.created_at.strftime('%Y/%m/%d') %></p>
-          </th>
-          </tr>
-
-          <td><%= @article.body %></td>
+          </a>
           <% if @article.user == current_user %>
-            <%= link_to '記事を編集する', edit_article_path(@article), class: "btn btn-sm btn-success edit_article_#{@article.id}" %>
-            <%= link_to '記事を削除する', article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger "%>
+          <div>
+            <%= link_to '', edit_article_path(@article), class: "fas fa-wrench fa-2x px-2 edit_article_#{@article.id}" %>
+            <%= link_to '', article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "fas fa-trash-alt fa-2x px-2" %>
+          </div>
           <% else %>
             <div id="bookmark_<%= @article.id %>">
               <%= render partial: 'bookmarks/bookmark_area', locals: {bookmarks: @bookmarks } %>
             </div>
           <% end %>
-      </table>
-      <table id="article_<%= @article.id %>">
-        <div class="comments">
-          <%= render partial: 'comments/index', comments: @comments %>
-        </div>
-      </table>
-         <div class="new-comment">
+        </p>
+        <hr>
+        <p>作成日 <%= @article.created_at.strftime('%Y/%m/%d') %></p>
+        <hr>
+        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+
+        <hr>
+
+        <p class="lead"><%= @article.title %></p>
+
+        <p class="mb-0"><%= @article.body %></p>
+
+        <hr>
+
+        <div class="card my-2">
+          <h5 class="card-header">New Comment</h5>
+          <div class="card-body">
+            <form>
+             <div class="new-comment">
               <%= form_with model:[@article, @comment] do |f| %>
               <%= f.text_area :body, size:"90x5",placeholder: "コメントをここに" %>
               <p><%= f.submit "       送信する      ", class:'btn btn-primary'%></p>
               <% end %>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="article_<%= @article.id %>">
+         <div class="comments">
+          <%= render partial: 'comments/index', comments: @comments %>
          </div>
+        </div>
+
+      </div>
+      </div>
     </div>
   </div>
-</div>

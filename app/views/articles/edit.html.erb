@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="ol-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
   		<h1>記事編集</h1>
-    	<%#= rexnder 'layouts/errors', obj: @article %>
+    	<%#= render 'layouts/errors', obj: @article %>
   		<%= form_for @article, url: article_path do |f| %>
            <h4>イメージ画像</h4>
            <%#= f.attachment_field :image %>

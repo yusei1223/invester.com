@@ -1,13 +1,11 @@
 <div class="container">
       <!-- Page Heading -->
-      <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-      </h1>
+      <h3 class="pt-4">お気に入り</h3>
       <hr>
       <!-- Project One -->
       <% @bookmarks.each do |bookmark| %>
       <div class="row">
-        <%= link_to article_path(bookmark) do %>
+        <%= link_to article_path(bookmark.article_id) do %>
         <div class="col-md-6">
             <%= attachment_image_tag bookmark.article, :image, fallback: "no_image.jpg", size:'500x280', class:"rounded"; %>
         </div>
@@ -18,9 +16,6 @@
           <p class="pt-5">
             <%= attachment_image_tag bookmark.user, :profile_image, :fill, 60, 60, fallback: "no_image_icon.jpg",size:'60x60',class:"rounded-circle";%>
             <%= bookmark.article.user.nickname %>
-          </p>
-          <p class="pt-4">
-              <%= render partial: 'articles/bookmark_area', locals: {bookmarks: @bookmarks } %>
           </p>
         </div>
       </div>
