@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :set_seach
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_seach
 
   protected
 
@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_seach
-   @search = Article.ransack(params[:q])
+    @search = Article.ransack(params[:q])
   end
-
 end

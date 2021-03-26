@@ -1,7 +1,5 @@
 class InquiresController < ApplicationController
-
-  def index
-  end
+  def index; end
 
   def new
     @inquire = Inquire.new
@@ -21,7 +19,6 @@ class InquiresController < ApplicationController
   private
 
   def inquire_params
-    params.require(:inquire).permit(:email, :body ,:nickname)
+    params.require(:inquire).permit(:email, :body, :nickname)
   end
-
 end

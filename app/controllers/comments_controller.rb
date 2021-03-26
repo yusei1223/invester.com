@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   def create
     @article = Article.find(params[:article_id])
-    #byebug
+    # byebug
     comment = @article.comments.build(comment_params)
     comment.user_id = current_user.id
     comment.save
@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
   end
-
 
   private
 
