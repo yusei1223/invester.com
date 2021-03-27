@@ -1,5 +1,11 @@
 <% if @article.bookmarked_by?(current_user) %>
-  <%= link_to "ブックマークから外す", article_bookmarks_path(@article), method: :delete, remote: true, class: "btn btn-outline-secondary md-6" %>
+<div>
+  <%= link_to article_bookmarks_path(@article), method: :delete, remote: true do %>
+  <i class="fas fa-star fa-2x" style="color:gold;"></i>
+  <% end %>
+</div>
 <% else %>
-  <%= link_to "ブックマークに登録する", article_bookmarks_path(@article), method: :post, remote: true, class: "btn btn-outline-secondary md-6" %>
+  <%= link_to article_bookmarks_path(@article), method: :post, remote: true do %>
+  <i class="far fa-star fa-2x" style="color:lightslategray;"></i>
+  <% end %>
 <% end %>

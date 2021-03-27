@@ -3,12 +3,10 @@
       <div class="col-md-10">
         <h1 class="mt-4"><%= @article.title %></h1>
         <p class="lead">
-          <a>
             <%= link_to user_path(@article.user) do %>
             <%= attachment_image_tag @article.user, :profile_image, fallback: "no_image_icon.jpg", size:'40x40', class:"mt-3 rounded-circle";%>
             <%= @article.user.nickname %>
             <% end %>
-          </a>
           <% if @article.user == current_user %>
           <div>
             <%= link_to '', edit_article_path(@article), class: "fas fa-wrench fa-2x px-2 edit_article_#{@article.id}" %>
@@ -23,14 +21,11 @@
         <hr>
         <p>作成日 <%= @article.created_at.strftime('%Y/%m/%d') %></p>
         <hr>
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <%= attachment_image_tag @article, :image,:fill, 60,60, fallback: "no_image.png",size:"800x400", class:"rounded"; %>
 
         <hr>
-
         <p class="lead"><%= @article.title %></p>
-
-        <p class="mb-0"><%= @article.body %></p>
-
+        <p class="mb-0"><%= simple_format(@article.body) %></p>
         <hr>
 
         <div class="card my-2">

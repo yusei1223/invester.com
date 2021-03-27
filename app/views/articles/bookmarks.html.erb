@@ -1,6 +1,6 @@
 <div class="container">
       <!-- Page Heading -->
-      <h3 class="pt-4">お気に入り</h3>
+      <h3 class="pt-4">Bookmark</h3>
       <hr>
       <!-- Project One -->
       <% @bookmarks.each do |bookmark| %>
@@ -12,8 +12,13 @@
         <%end%>
         <div class="col-md-5">
           <h3><%= bookmark.article.title %></h3>
-          <p><%= bookmark.article.body%></p>
-          <p class="pt-5">
+          <p><%= bookmark.article.body %></p>
+          <p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <%= attachment_image_tag bookmark.user, :profile_image, :fill, 60, 60, fallback: "no_image_icon.jpg",size:'60x60',class:"rounded-circle";%>
             <%= bookmark.article.user.nickname %>
           </p>

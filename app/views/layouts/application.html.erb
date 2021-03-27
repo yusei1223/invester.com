@@ -35,7 +35,7 @@
         <% end %>
       </li>
       <li class="nav-item px-3" data-toggle="tooltip" title="分析記事を投稿しよう！">
-        <%= link_to  new_article_path, method: :get do %>
+        <%= link_to new_article_path, method: :get do %>
         <i class="fas fa-pencil-alt fa-2x" style="color:gainsboro;"></i>
       </li>
     <% end %>
@@ -43,15 +43,14 @@
 <!--   <%#= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>-->
 <!--</li>-->
 <li class="nav-item px-3">
-<div class="menu-featured-categories-container">
+ <div class="menu-featured-categories-container">
   <div id="menu-featured-categories">
     <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
      <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
       <% end %>
-        <ul class="sub-menu ">
+        <ul class="sub-menu">
           <div class="box2">
           <% current_user.passive_notifications.each do |notification| %>
-
             <li>
               <%= attachment_image_tag notification.visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image_icon_min.png", class: "rounded-circle" %>
               <%= notification.visitor.nickname %>

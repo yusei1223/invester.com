@@ -8,6 +8,8 @@ class Article < ApplicationRecord
   has_many :article_categories
   has_many :categories, through: :article_categories
   has_many :notifications, dependent: :destroy
+  validates :title, presence: true
+  validates :body, presence: true
   attachment :image
 
   def bookmarked_by?(user)

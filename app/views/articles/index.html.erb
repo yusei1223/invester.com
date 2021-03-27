@@ -1,8 +1,8 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col-md-8">
-　  <h4 class="pt-5">New！</h4>
-        <div class="swiper-container">
+       <div class="swiper-container">
+           <h4>New！</h4>
         <div class="swiper-wrapper">
           <% @newarticles.each do |article| %>
              <div class="swiper-slide">
@@ -19,18 +19,21 @@
       </div>
 
    <div class="col-md-4">
-      <div class="rank" >
-         <div class="card my-4">
-         <% @all_ranks.each.with_index(1) do |article, i| %>
+       <div class="rank" >
+    　　<h5 class="header">いいねランキング</h5>
+    　　     <% @all_ranks.each.with_index(1) do |article, i|%>
          <h5 class="card-header">
          第 <%= i %> 位
          <%= article.user.nickname %>さん
+         <%= article.favorites.count%>
          </h5>
             <div class="card shadow-lg">
-              <%= attachment_image_tag article, :image, fallback: "no_image.png",size:'75x75', class:"rounded"; %>
+                <%= link_to article_path(article) do %>
+                <%= attachment_image_tag article, :image,:fill, 60,60, fallback: "no_image.png",size:"60x60", class:"rounded"; %>
+                <%= article.title %>
+                <% end %>
 　          </div>
          <% end %>
-         </div>
       </div>
    </div>
 
@@ -43,14 +46,14 @@
     <div class="col-lg-4 col-sm-6 mb-4">
       <div class="card h-100">
              <%= link_to article_path(article) do %>
-             <%= attachment_image_tag article, :image,:fill, 348,230, fallback: "no_image.png", class:"rounded"; %>
+             <%= attachment_image_tag article, :image,:fill, 338,230, fallback: "no_image.png", class:"rounded"; %>
              <%= image_tag('') %>
           <h4 class="card-title">
-             <%= article.title %>
+             <%= article.title.truncate(15) %>
           </h4>
              <% end %>
           <p class="card-text">
-             <%= article.body %>
+             <%= article.body.truncate(50) %>
           </p>
           <div class="card-footer">
                             <%= link_to user_path(article.user) do %>
@@ -59,7 +62,9 @@
                             <% end %>
                             <div class="row col-lg-6">
                                 <div>
-                                    <%= link_to "#{article.comments.count}", article_path(article.id), class: "fas fa-comment" %>
+                                    <%= link_to article_path(article.id) do %>
+                                    <i class="far fa-comment"><%= article.comments.count%></i>
+                                    <% end %>
                                 </div>
                                 <div id="favorites_buttons_<%= article.id %>">
                                     <%= render "favorites/favorite", article: article %>
