@@ -83,24 +83,24 @@ li{
     color: #fff;
 }
 
-.box2 {
-    padding: 0.5em 1em;
-    margin: 2em 0;
+.tooltip-inner {
+    max-width: 300px;
+
+    background-color: #FFF;
+    padding: 1em 1em;
+    margin: 1em 0;
     font-weight: bold;
-    color: #6091d3;/*文字色*/
-    background: #FFF;
+    color: #778899;/*文字色*/
     border: solid 3px #6091d3;/*線*/
     border-radius: 10px;/*角の丸み*/
-}
-.box2 p {
-    margin: 0;
-    padding: 0;
-}
+    width: 100%;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
+    font-family: 'Roboto', Arial, sans-serif;
 
-#menu-featured-categories ul.sub-menu {
-    display: none;
 }
-
-#menu-featured-categories ul.visible {
-    display: block;
+.tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-top .arrow::before {
+    margin-left: -3px;
+    content: "";
+    border-width: 5px 5px 0;
+    border-top-color: #000;
 }

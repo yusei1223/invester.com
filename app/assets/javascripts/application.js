@@ -15,14 +15,16 @@
 //= require popper
 //= require bootstrap-sprockets
 
-//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-    $('.menu-item-has-children').click(function() {
-        $('.sub-menu').toggleClass('visible');
-    });
-});
+// $(document).ready(function() {
+//     $('.menu-item-has-children').click(function() {
+//         $('.sub-menu').toggleClass('visible');
+//     });
+// });
+
+
+// $('#example').tooltip({ boundary: 'window' });

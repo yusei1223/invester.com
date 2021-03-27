@@ -9,7 +9,7 @@
       <!-- /.col-lg-8 -->
       <div class="col-md-4">
         <h1 class="font-weight-light"><%= @user.nickname %></h1>
-        <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+        <p><%= @user.introduction%></p>
         <div class="row px-3">
           <%= link_to user_followings_path(@user) do %>
           <h6><%= @user.followings.count %>フォロー</h6>

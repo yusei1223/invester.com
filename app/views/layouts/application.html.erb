@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+　　<body>
   <header>
     <div class='fixed-top'>
     <nav class="navbar navbar-expand-lg navbar-dark p-3" style="background-color:#2F4F4F;">
@@ -29,60 +30,42 @@
           </div>
      </div>
     <% end %>
-      <li class="nav-item px-3">
+
+<!--<table>-->
+<!--<tr>-->
+<!--<th>タイトル <div class="clickToolTip">?</div></th>-->
+<!--<td><input type="text" name="title"></td>-->
+<!--</tr>-->
+<!--</table>-->
+ <!--ツールチップで表示させる内容 -->
+<!--<p id="note1" class="toolTip invisible">"タイトル"の説明</p>-->
+
+      <li class="nav-item px-3" data-toggle="tooltip" title="みんなの投稿記事をみてみよう！">
         <%= link_to articles_path, method: :get do %>
         <i class="far fa-newspaper fa-2x" style="color:gainsboro;"></i>
         <% end %>
       </li>
-      <li class="nav-item px-3" data-toggle="tooltip" title="分析記事を投稿しよう！">
+      <li class="nav-item px-3" data-toggle="tooltip" title="記事を投稿しよう！">
         <%= link_to new_article_path, method: :get do %>
         <i class="fas fa-pencil-alt fa-2x" style="color:gainsboro;"></i>
       </li>
     <% end %>
+    <script>$('[data-toggle="tooltip"]').tooltip({ html: true, trigger: 'hover' })</script>
+
 <!--<li class="nav-item px-3 notification_button">-->
 <!--   <%#= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>-->
 <!--</li>-->
-<li class="nav-item px-3">
- <div class="menu-featured-categories-container">
-  <div id="menu-featured-categories">
-    <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
-     <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
-      <% end %>
-        <ul class="sub-menu">
-          <div class="box2">
-          <% current_user.passive_notifications.each do |notification| %>
-            <li>
-              <%= attachment_image_tag notification.visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image_icon_min.png", class: "rounded-circle" %>
-              <%= notification.visitor.nickname %>
-              <a>さんが</a>
-              <% case notification.action %>
-                 <% when 'follow' then %>
-                   <%= "あなたをフォローしました" %>
-                 <% when 'favorite' then %>
-                 <%= link_to 'あなたの投稿', notification.article, style: "font-weight: bold;" %>
-                 <%= "にいいねしました" %>
-                 <% when 'comment' then %>
-                <% if notification.article.user_id == notification.visited.id %>
-                 <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
-                 <%= "にコメントしました" %>
-                <% else %>
-                 <%= link_to article_path(notification.article) do %>
-                 <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, fallback: "no_image_icon_min.png", size:'5x5', class: "rounded-circle";%>
-                 <%= notification.article.user.nickname + 'さんの投稿' %>
-                 <% end %>
-                 <%= "にコメントしました" %>
-                <% end %>
-              <% end %>
-            <%= time_ago_in_words(notification.created_at).upcase %>前
-            <div class="dropdown-divider"></div>
-            </li>
-          <% end %>
-          <%= link_to "全部見る", notifications_path %>
-          </div>
-        </ul>
-  </div>
-</div>
-</li>
+
+      <li class="nav-item px-3">
+         <div class="menu-featured-categories-container">
+           <div id="menu-featured-categories">
+             <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
+             <!--<i class="far fa-bell fa-2x" style="color:gainsboro;"></i>-->
+             <%= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>
+        　<% end %>
+      </div>
+      </div>
+      </li>
       <li class="dropdown px-3">
         <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span class="caret">
@@ -90,14 +73,15 @@
           </span>
         </div>
           <ul class="dropdown-menu">
-            <li class="dropdown-item"><font size="2"><%= link_to "マイページ", user_path(current_user.id) %></font></li>
+            <li class="dropdown-item"><font size="2"><%= link_to "マイページ", user_path(current_user.id), method: :get %></font></li>
             <li class="dropdown-item"><font size="2"><%= link_to "ブックマーク一覧", bookmarks_articles_path, method: :get %></font></li>
             <li class="dropdown-item"><font size="2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></font></li>
             <div class="dropdown-divider"></div>
-            <li class="dropdown-item"><font size="2"><%= link_to "お問い合わせ", new_inquire_path %></font></li>
+            <li class="dropdown-item"><font size="2"><%= link_to "お問い合わせ", new_inquire_path, method: :get %></font></li>
             <li role="separator" class="divider"></li>
           </ul>
       </li>
+
     <% else %>
       <li class="nav-item px-2"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %></li>
       <li class="nav-item px-2"><%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %></li>
@@ -111,7 +95,7 @@
      </nav>
    </div>
 </header>
-  <body>
+
     <%= yield %>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script>

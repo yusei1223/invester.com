@@ -1,4 +1,37 @@
- <%= link_to notifications_path, method: :get do %>
+ <%#= link_to notifications_path, method: :get do %>
+  <!--checked: <%#= unchecked_notifications.any? %>-->
+    <div class="red-tip" data-toggle="tooltip" data-html="true" title='<div>
+            <p>最新の通知は以下の通りです<p>
+            <div class="dropdown-divider"></div>
+            <% @current_user_notification.each do |notification| %>
+            <li>
+              <%= attachment_image_tag notification.visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image_icon_min.png", class: "rounded-circle" %>
+              <%= notification.visitor.nickname %>
+              <a>さんが</a>
+              <% case notification.action %>
+                 <% when 'follow' then %>
+                 <%= "あなたをフォローしました" %>
+                 <% when 'favorite' then %>
+                 <%= link_to 'あなたの投稿', notification.article, style: "font-weight: bold;" %>
+                 <%= "にいいねしました" %>
+                 <% when 'comment' then %>
+                <% if notification.article.user_id == notification.visited.id %>
+                 <%= link_to "あなたの投稿", notification.article, style: "font-weight: bold;" %>
+                 <%= "にコメントしました" %>
+                <% else %>
+                 <%= link_to article_path(notification.article) do %>
+                 <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, fallback: "no_image_icon_min.png", size:'5x5', class: "rounded-circle";%>
+                 <%= notification.article.user.nickname + 'さんの投稿' %>
+                 <% end %>
+                 <%= "にコメントしました" %>
+                <% end %>
+              <% end %>
+            <%= time_ago_in_words(notification.created_at).upcase %>前
+            <div class="dropdown-divider"></div>
+            </li>
+         <% end %>
+          <%= link_to "全部見る", notifications_path %>
+        </div>'>
       <% if unchecked_notifications.any? %>
             <span class="fa stack">
                 <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
@@ -7,4 +40,6 @@
       <% else %>
                 <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
       <% end %>
- <% end %>
+    </div>
+    <script>$('[data-toggle="tooltip"]').tooltip({ html: true, trigger: 'click' })</script>
+ <%# end %>
