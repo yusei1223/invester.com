@@ -1,5 +1,5 @@
 class Inquire < ApplicationRecord
   validates :nickname, presence: true
-  validates :email, presence: true, length: { maximum: 255 }
+  validates :email, presence: true
   validates :body, presence: true
 end
