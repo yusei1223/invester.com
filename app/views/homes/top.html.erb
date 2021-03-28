@@ -5,7 +5,11 @@
       <h3 class="mb-5">
         <em>Post your company analysis!</em>
       </h3>
-      <a class="btn btn-primary btn js-scroll-trigger" href="#about">NEXT</a>
+      <% if user_signed_in? %>
+      <%= link_to "投稿一覧へ", articles_path, class: "btn btn-primary" %>
+      <% else %>
+      <%= link_to "LOGIN", new_user_session_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
     <div class="overlay"></div>
   </header>

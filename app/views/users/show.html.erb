@@ -1,12 +1,12 @@
 <div class="container">
 
-    <!-- Heading Row -->
+   
     <div class="row align-items-center pt-5">
       <div class="col-md-2"></div>
       <div class="col-md-4">
         <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'250x250', class:"rounded-circle"; %>
       </div>
-      <!-- /.col-lg-8 -->
+      
       <div class="col-md-4">
         <h1 class="font-weight-light"><%= @user.nickname %></h1>
         <p><%= @user.introduction%></p>
@@ -42,14 +42,14 @@
     <div class="col-lg-4 col-sm-6 mb-4">
       <div class="card h-100">
              <%= link_to article_path(article) do %>
-             <%= attachment_image_tag article, :image,size:"335x230", fallback: "no_image.png", class:"rounded"; %>
+             <%= attachment_image_tag article, :image,:fill, 338,230, fallback: "no_image.png", class:"rounded"; %>
              <%= image_tag('') %>
           <h4 class="card-title">
-             <%= article.title %>
+             <%= article.title.truncate(15) %>
           </h4>
              <% end %>
           <p class="card-text">
-             <%= article.body %>
+             <%= article.body.truncate(50) %>
           </p>
           <div class="card-footer">
                             <%= link_to user_path(article.user) do %>

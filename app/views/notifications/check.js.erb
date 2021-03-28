@@ -1,1 +1,1 @@
-$(".notification_button").html("<%= j(render 'layouts/notification_button', unchecked_notifications: @unchecked_notifications) %>");
+$(".notification_button").innerHtml = "<%= j(render 'layouts/notification_button', unchecked_notifications: @unchecked_notifications) %>";

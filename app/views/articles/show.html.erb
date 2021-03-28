@@ -9,8 +9,12 @@
             <% end %>
           <% if @article.user == current_user %>
           <div>
-            <%= link_to '', edit_article_path(@article), class: "fas fa-wrench fa-2x px-2 edit_article_#{@article.id}" %>
-            <%= link_to '', article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' }, class: "fas fa-trash-alt fa-2x px-2" %>
+            <%= link_to edit_article_path(@article) do %>
+            <i class="fas fa-wrench fa-2x px-2 edit_article_#{@article.id} fa-2x" style="color:dimgray;"></i>
+            <% end %>
+            <%= link_to article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+            <i class="fas fa-trash-alt fa-2x px-2" style="color:dimgray;"></i>
+            <% end %>
           </div>
           <% else %>
             <div id="bookmark_<%= @article.id %>">
@@ -31,22 +35,20 @@
         <div class="card my-2">
           <h5 class="card-header">New Comment</h5>
           <div class="card-body">
-            <form>
              <div class="new-comment">
               <%= form_with model:[@article, @comment] do |f| %>
               <%= f.text_area :body, size:"90x5",placeholder: "コメントをここに" %>
               <p><%= f.submit "       送信する      ", class:'btn btn-primary'%></p>
               <% end %>
               </div>
-            </form>
           </div>
         </div>
 
         <div id="article_<%= @article.id %>">
-         <div class="comments">
+        </div>
+        <div class="comments">
           <%= render partial: 'comments/index', comments: @comments %>
          </div>
-        </div>
 
       </div>
       </div>

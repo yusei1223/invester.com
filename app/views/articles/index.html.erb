@@ -2,21 +2,23 @@
   <div class="row">
     <div class="col-md-8">
        <div class="swiper-container">
+           <!--最新の投稿から順に１０件を表示-->
            <h4>New！</h4>
         <div class="swiper-wrapper">
           <% @newarticles.each do |article| %>
              <div class="swiper-slide">
-             <%= link_to article_path(article) do %>
-             <%= attachment_image_tag article, :image, fallback: "no_image.png",size:"323x230", class:"rounded"; %>
-             <%= article.title %>
-             <% end %>
+                <%= link_to article_path(article) do %>
+                <%= attachment_image_tag article, :image, fallback: "no_image.png",size:"323x230", class:"rounded"; %>
+                <h5><%= article.title.truncate(15) %></h5>
+                <% end %>
+                <p><%= article.body.truncate(50) %></p>
              </div>
           <% end %>
         </div>
            <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
        </div>
-      </div>
+    </div>
 
    <div class="col-md-4">
        <div class="rank" >
@@ -25,7 +27,7 @@
          <h5 class="card-header">
          第 <%= i %> 位
          <%= article.user.nickname %>さん
-         <%= article.favorites.count%>
+         <i class="fas fa-heart" style="color:orangered;"><%= article.favorites.count%></i>
          </h5>
             <div class="card shadow-lg">
                 <%= link_to article_path(article) do %>
