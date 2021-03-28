@@ -9,7 +9,6 @@ class InquiresController < ApplicationController
     @inquire = Inquire.new(inquire_params)
     if @inquire.save
       ContactMailer.send_mail(@inquire).deliver
-      flash[:success] = 'お問い合わせを受け付けました'
       redirect_to inquires_path
     else
       render :new

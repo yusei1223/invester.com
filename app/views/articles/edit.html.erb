@@ -13,10 +13,12 @@
                <%= f.text_area :body,size: "30x20", class: "form-control" %>
              </div>
              <br>
-            <%= f.submit "       投稿を編集する      ", class:'btn btn-primary'%>
+             <%= f.hidden_field :id %>
+            <%= f.submit "       投稿を編集する      ", class: 'btn btn-primary'%>
          <% end %>
-  		<%#= link_to 'Show', article_path(@article), class: "book_#{@book.id}" %> |
-  		<%= link_to 'Back', articles_path, class: "back" %>
+         <br>
+  		<%= link_to '記事へ', article_path(@article),class: 'btn btn-secondary'%>
+  		<%= link_to '一覧へ戻る', articles_path,class: 'btn btn-secondary'%>
   </div>
  </div>
 </div>

@@ -41,6 +41,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to article_path(@article), notice: 'You have updated book successfully.'
     else

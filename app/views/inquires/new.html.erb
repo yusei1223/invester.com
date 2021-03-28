@@ -5,6 +5,12 @@
 </div>
 <%= form_for @inquire do |f| %>
 
+<% if @inquire.errors.any? %>
+  <% @inquire.errors.full_messages.each do |message| %>
+    <div style="color:red;"><%= message %></div>
+  <% end %>
+<% end %>
+
 <div class="form-group col-md-3">
     <%= f.label :nickname, 'あなたのニックネームを入力してください' %>
     <%= f.text_field :nickname, class: 'form-control' %>

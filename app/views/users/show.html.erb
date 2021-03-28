@@ -1,12 +1,12 @@
 <div class="container">
 
-   
+
     <div class="row align-items-center pt-5">
       <div class="col-md-2"></div>
       <div class="col-md-4">
         <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image_icon.jpg",size:'250x250', class:"rounded-circle"; %>
       </div>
-      
+
       <div class="col-md-4">
         <h1 class="font-weight-light"><%= @user.nickname %></h1>
         <p><%= @user.introduction%></p>
@@ -58,7 +58,7 @@
                             <% end %>
                             <div class="row col-lg-6">
                                 <div>
-                                    <%= link_to "#{article.comments.count}", article_path(article.id), class: "fas fa-comment" %>
+                                    <%= link_to "#{article.comments.count}", article_path(article.id), class: "far fa-comment" %>
                                 </div>
                                 <div id="favorites_buttons_<%= article.id %>">
                                     <%= render "favorites/favorite", article: article %>
