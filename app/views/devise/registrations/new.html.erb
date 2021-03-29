@@ -10,13 +10,6 @@
   <font size="4">ようこそ!  インベスター.comへ</font>
 </p>
 
-<% if @inquire.errors.any? %>
-        <%= @inquire.errors.count %>件のエラーが発生しました
-  <% @inquire.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-
   <div class="actions text-center">
     <%= link_to "Googleアカウントで登録する", user_google_oauth2_omniauth_authorize_path, class:'fab fa-google-plus btn btn-primary' %>
   </div>
