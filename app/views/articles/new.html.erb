@@ -3,6 +3,11 @@
     <div class="ol-md-9 col-lg-9 px-5 px-sm-0 mx-auto">
 
 <%= form_with model: @article, url:'/articles', local:true do |f| %>
+<% if @article.errors.any? %>
+  <% @article.errors.full_messages.each do |message| %>
+    <div style="color:red;"><%= message %></div>
+  <% end %>
+<% end %>
   <h1>新規投稿</h1>
 
   <h5>イメージ画像</h5>

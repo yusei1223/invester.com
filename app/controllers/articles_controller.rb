@@ -31,8 +31,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path(@article), notice: 'You have created book successfully.'
     else
-      @articles = Article.all
-      render 'index'
+      render 'new'
     end
   end
 
