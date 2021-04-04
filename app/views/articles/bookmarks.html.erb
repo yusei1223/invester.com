@@ -1,8 +1,8 @@
-<div class="container">
-      <!-- Page Heading -->
+<div class="container pb-3">
+
       <h3 class="pt-4">Bookmark</h3>
       <hr>
-      <!-- Project One -->
+
       <% @bookmarks.each do |bookmark| %>
       <div class="row">
         <%= link_to article_path(bookmark.article_id) do %>
@@ -15,12 +15,11 @@
           <p><%= bookmark.article.body.truncate(200) %></p>
           <p>
             <br>
-            <br>
             <%= attachment_image_tag bookmark.user, :profile_image, :fill, 60, 60, fallback: "no_image_icon.jpg",size:'60x60',class:"rounded-circle";%>
             <%= bookmark.article.user.nickname %>
           </p>
         </div>
       </div>
-      <% end %>
       <hr>
+      <% end %>
 </div>

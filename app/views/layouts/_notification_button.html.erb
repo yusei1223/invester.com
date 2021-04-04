@@ -5,7 +5,7 @@
             <div class="dropdown-divider"></div>
             <% @current_user_notification.each do |notification| %>
             <li>
-              <%= attachment_image_tag notification.visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image_icon_min.png", class: "rounded-circle" %>
+              <%= attachment_image_tag notification.visitor, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image_icon_min.png", class: "rounded-circle" %>
               <%= notification.visitor.nickname %>
               <a>さんが</a>
               <% case notification.action %>
@@ -20,7 +20,7 @@
                  <%= "にコメントしました" %>
                 <% else %>
                  <%= link_to article_path(notification.article) do %>
-                 <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, fallback: "no_image_icon_min.png", size:'5x5', class: "rounded-circle";%>
+                 <%= attachment_image_tag visitor, :profile_image, :fill, 40, 40, fallback: "no_image_icon_min.png", size:'5x5', class: "rounded-circle";%>
                  <%= notification.article.user.nickname + 'さんの投稿' %>
                  <% end %>
                  <%= "にコメントしました" %>
@@ -32,6 +32,8 @@
          <% end %>
           <%= link_to "全部見る", notifications_path %>
         </div>'>
+
+     <div class="notification_button">
       <% if unchecked_notifications.any? %>
             <span class="fa stack">
                 <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
@@ -40,6 +42,8 @@
       <% else %>
                 <i class="far fa-bell fa-2x" style="color:gainsboro;"></i>
       <% end %>
+     </div>
+
     </div>
     <script>$('[data-toggle="tooltip"]').tooltip({ html: true, trigger: 'click' })</script>
  <%# end %>
