@@ -31,17 +31,18 @@
      </div>
     <% end %>
 
-      <li class="nav-item px-3" data-toggle="tooltip" title="みんなの投稿記事をみてみよう！">
+      <li class="nav-item px-3 js-tooltip" data-toggle="tooltip" title="みんなの投稿記事をみてみよう！">
         <%= link_to articles_path, method: :get do %>
         <i class="far fa-newspaper fa-2x" style="color:gainsboro;"></i>
         <% end %>
       </li>
-      <li class="nav-item px-3" data-toggle="tooltip" title="記事を投稿しよう！">
+      <li class="nav-item px-3 js-tooltip" data-toggle="tooltip" title="記事を投稿しよう！">
         <%= link_to new_article_path, method: :get do %>
         <i class="fas fa-pencil-alt fa-2x" style="color:gainsboro;"></i>
       </li>
     <% end %>
-    <script>$('[data-toggle="tooltip"]').tooltip({ html: true, trigger: 'hover' })</script>
+    <script>$('.js-tooltip').tooltip({ html: true, trigger: 'hover' })</script>
+
 
 <!--<li class="nav-item px-3 notification_button">-->
 <!--   <%#= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>-->

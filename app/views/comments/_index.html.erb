@@ -2,20 +2,19 @@
    <% @article.comments.each do |comment| %>
       <% comment_user = comment.user %>
         <!--<div class="d-flex mr-4">-->
-        <div class="row">
-    		<%= attachment_image_tag comment.user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg", size: "70x70",class:"mt-3 rounded-circle"; %>
-    		<h5><%= comment.user.nickname %></h5>
+        <div class="lead">
+    		<%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50",class:"mt-3 rounded-circle"; %>
+    		<%= comment.user.nickname %>
     	</div>
-    		<p><%= comment.body %><p>
-
-    		          <div class="row">
-    		            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-  	                      <% if current_user == comment_user %>
-    	                     <%= link_to article_comment_path(comment.article_id, comment.id), method: :delete, remote: true do %>
-    	                     <i class="fas fa-trash-alt fa-lg px-2" style="color:dimgray;"></i>
-    	                     <% end %>
-  	                      <% end %>
-                      </div>
+    		<p><%= comment.body %></p>
+    		  <div class="row">
+    		      <%= comment.created_at.strftime('%Y/%m/%d') %>
+  	                  <% if current_user == comment_user %>
+    	                   <%= link_to article_comment_path(comment.article_id, comment.id), method: :delete, remote: true do %>
+    	                   <i class="fas fa-trash-alt fa-lg px-2" style="color:dimgray;"></i>
+    	                   <% end %>
+  	                  <% end %>
+              </div>
    <% end %>
 </div>
 
