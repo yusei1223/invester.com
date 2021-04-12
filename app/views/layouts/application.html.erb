@@ -40,21 +40,18 @@
       <li class="nav-item px-3 js-tooltip" data-toggle="tooltip" title="記事を投稿しよう！">
         <%= link_to new_article_path, method: :get do %>
         <i class="fas fa-pencil-alt fa-2x" style="color:gainsboro;"></i>
+        <% end %>
       </li>
-    <% end %>
-    <script>$('.js-tooltip').tooltip({ html: true, trigger: 'hover' })</script>
 
-<!--<li class="nav-item px-3 notification_button">-->
-<!--   <%#= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>-->
-<!--</li>-->
+    <script>$('.js-tooltip').tooltip({ html: true, trigger: 'hover' })</script>
 
       <li class="nav-item px-3">
          <div class="menu-featured-categories-container">
            <div id="menu-featured-categories">
              <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
              <%= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>
-        　<% end %>
-      </div>
+             <% end %>
+          </div>
       </div>
       </li>
       <li class="dropdown px-3">
@@ -63,7 +60,7 @@
              <i class="fas fa-smile-wink fa-2x" style="color:gainsboro;"></i>
           </span>
         </div>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color:#f5f5f5;">
             <li class="dropdown-item"><font size="2"><%= link_to "マイページ", user_path(current_user.id), method: :get %></font></li>
             <li class="dropdown-item"><font size="2"><%= link_to "ブックマーク一覧", bookmarks_articles_path, method: :get %></font></li>
             <li class="dropdown-item"><font size="2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></font></li>
