@@ -7,11 +7,11 @@
         <div class="swiper-wrapper">
           <% @newarticles.each do |article| %>
              <div class="swiper-slide">
-                <%= link_to article_path(article) do %>
-                <%= attachment_image_tag article, :image, fallback: "no_image.png",size:"300x230", class:"rounded"; %>
-                <h5><%= article.title.truncate(15) %></h5>
-                <% end %>
-                <p><%= article.body.truncate(75) %></p>
+                  <%= link_to article_path(article) do %>
+                  <%= attachment_image_tag article, :image, fallback: "no_image.png",size:"300x230", class:"rounded"; %>
+                  <h5 class="card-title"><%= article.title.truncate(15) %></h5>
+                  <% end %>
+                  <p class="card-text"><%= article.body.truncate(75) %></p>
              </div>
           <% end %>
         </div>
@@ -22,7 +22,6 @@
 
    <div class="col-md-4">
        <div class="rank" >
-    　　<h5 class="header">いいねランキング</h5>
     　　     <% @all_ranks.each.with_index(1) do |article, i|%>
          <h5 class="card-header">
          第 <%= i %> 位
@@ -50,9 +49,9 @@
              <%= link_to article_path(article) do %>
              <%= attachment_image_tag article, :image,:fill, 338,230, fallback: "no_image.png", class:"rounded"; %>
              <%= image_tag('') %>
-          <h4 class="card-title">
+          <h5 class="card-title">
              <%= article.title.truncate(15) %>
-          </h4>
+          </h5>
              <% end %>
           <p class="card-text">
              <%= article.body.truncate(75) %>
