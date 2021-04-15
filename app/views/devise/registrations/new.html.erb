@@ -12,7 +12,6 @@
     <%= link_to "Googleアカウントで登録する", user_google_oauth2_omniauth_authorize_path, class:'fab fa-google-plus btn btn-primary' %>
   </div>
 </br>
- <h5>新規登録する</h5>
   <div class="field">
     <font size="2"><%= f.label :'ニックネームを入力してください' %></font><br>
     <%= f.text_field :nickname, :size=>"30", autofocus: true, :placeholder => "investerさん" %>
@@ -35,7 +34,7 @@
 <br>
 
   <div class="actions text-center ">
-   <%= f.submit "       登録する      ", class: "btn btn-outline-secondary"%>
+   <%= f.submit "            登録する           ", class: "btn btn-primary"%>
   </div>
 
 <% end %>
