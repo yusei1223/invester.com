@@ -6,8 +6,6 @@ class UsersController < ApplicationController
     @users
   end
 
-  def bookmarks; end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -17,6 +15,8 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:nickname, :profile_image, :introduction)

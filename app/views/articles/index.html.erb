@@ -40,8 +40,31 @@
 
 　</div>
 <div class="container pb-5">
-  <hr>
-    <%= sort_link(@search, :updated_at, "作成日") %>
+<hr>
+
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2F4F4F;">
+     <button class="navbar-toggler" type="button"
+        data-toggle="collapse"
+        data-target="#navmenu1"
+        aria-controls="navmenu1"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+  <div class="collapse navbar-collapse" id="navmenu1">
+    <div class="navbar-nav">
+      <div class="search_menu pr-2">
+        <%= search_form_for @search, url: search_articles_path ,html: { method: :post } do |f| %>
+        <%= f.select( :sorts, { '並び替え': 'id desc', '投稿の古い順': 'updated_at asc', '投稿の新しい順': 'updated_at desc', 'いいね!の多い順': 'favorites_count desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%>
+        <% end %>
+      </div>
+        <div class="px-2"><%= link_to '日本株式', articles_path(q: { categories_name: "日本株式" }), class: 'btn btn-secondary'%></div>
+        <div class="px-2"><%= link_to '米国株式', articles_path(q: { categories_name: "米国株式" }), class: 'btn btn-secondary'%></div>
+        <div class="px-2"><%= link_to '暗号資産', articles_path(q: { categories_name: "日本株式" }), class: 'btn btn-secondary'%></div>
+    </div>
+  </div>
+</nav>
+
   <div class="row">
      <% @search_articles.each do |article| %>
     <div class="col-lg-4 col-sm-6 mb-4">

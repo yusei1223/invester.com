@@ -12,6 +12,11 @@ class Article < ApplicationRecord
   validates :body, presence: true
   attachment :image
 
+  ransacker :favorites_count do
+    query = '(SELECT COUNT(favorites.article_id) FROM favorites where favorites.article_id = articles.id GROUP BY favorites.article_id)'
+    Arel.sql(query)
+  end
+
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end

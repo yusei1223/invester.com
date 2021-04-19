@@ -40,6 +40,11 @@ body{
     display: flex;
 }
 
+i:hover, i:focus, i:active {
+  color: #ff6347 !important;
+
+}
+
 ul{
     text-align: center;
     list-style-type: none;

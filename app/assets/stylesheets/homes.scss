@@ -97,10 +97,17 @@ a {
 
 a:hover, a:focus, a:active {
   color: #155d74;
-}.btn-primary {
+}
+.btn-primary {
   background-color: #1D809F !important;
   border-color: #1D809F !important;
   color: #fff !important;
+}
+.btn-secondary {
+  color: #808080 !important;
+  background-color: #f5f5f5 !important;
+  border-bottom: 3px solid #d3d3d3 !important;
+  padding: 7px 10px 10px 10px !important;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
@@ -109,8 +116,10 @@ a:hover, a:focus, a:active {
 }
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
-  background-color: #ba9106 !important;
-  border-color: #ba9106 !important;
+  margin-top: 2px !important;
+  color: #808080 !important;
+  background: #dcdcdc !important;
+  border-bottom: 1px solid #a9a9a9 !important;
 }
 
 .bg-primary {

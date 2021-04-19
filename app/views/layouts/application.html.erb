@@ -20,6 +20,7 @@
       </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
+      
     <% if user_signed_in? %>
       <%= search_form_for @search, url:articles_path do |f| %>
      <div class="input-group mb-6 px-2">

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   	end
 
    resources :articles do
+    collection do
+    match 'search' => 'articles#index', via: [:get, :post]
+    end
     get :bookmarks, on: :collection
     get :ranks, on: :collection
     resource :bookmarks, only: [:create, :destroy]

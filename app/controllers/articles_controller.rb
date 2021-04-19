@@ -11,12 +11,25 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    # seach時にifで検索結果を表示させそうでないなら、全ての投稿を表示させる。
+    # 検索時にifで検索結果を表示させ、elseで全ての投稿を表示させる。
     @search_articles = if params[:q]
                          @search.result(distinct: true).order(created_at: 'DESC').includes(:user).page(params[:page]).per(9)
                        else
                          Article.all.page(params[:page]).per(9)
                        end
+
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Article.ransack(search_params)
+      @articles = @search.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Article.ransack()
+      @articles = Article.all
+    end
+    @q = Article.ransack(params[:q])
+    @articles = @q.result
     @newarticles = Article.all.order(created_at: :desc).limit(10)
     @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
   end
@@ -68,4 +81,9 @@ class ArticlesController < ApplicationController
   def sort_params
     params.permit(:sort)
   end
+
+  def search_params
+    params.require(:q).permit(:sorts)
+  end
 end
+
