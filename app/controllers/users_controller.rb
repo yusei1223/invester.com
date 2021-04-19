@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
+
+  def index
+    redirect_to new_user_registration_path
+  end
+
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.page(params[:page]).reverse_order

@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 
   def index
     # 検索時にifで検索結果を表示させ、elseで全ての投稿を表示させる。
+   #  byebug
     @search_articles = if params[:q]
                          @search.result(distinct: true).order(created_at: 'DESC').includes(:user).page(params[:page]).per(9)
                        else

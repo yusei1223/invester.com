@@ -108,3 +108,21 @@ li{
     border-width: 5px 5px 0;
     border-top-color: #000;
 }
+
+.article_image{
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin-bottom: 20px;
+    padding: 10px 25px 10px 10px;
+	font-size: 100%;
+	color: #808080;
+	line-height: 1.1em;
+	border-radius: 5px;
+	border: none;
+	background: image-url('icon_arrow.png');
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+	background-position: right 10px center;
+	background-color: #ffffff;
+}

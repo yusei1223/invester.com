@@ -12,6 +12,11 @@ class Article < ApplicationRecord
   validates :body, presence: true
   attachment :image
 
+  ransacker :comments_count do
+    query = '(SELECT COUNT(comments.article_id) FROM comments where comments.article_id = articles.id GROUP BY comments.article_id)'
+    Arel.sql(query)
+  end
+
   ransacker :favorites_count do
     query = '(SELECT COUNT(favorites.article_id) FROM favorites where favorites.article_id = articles.id GROUP BY favorites.article_id)'
     Arel.sql(query)
