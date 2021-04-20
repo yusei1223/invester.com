@@ -10,20 +10,26 @@
           <% end %>
              <h3>記事を投稿しよう！</h3>
                <hr>
-                  <h5>イメージ画像</h5>
-                  <div class="btn btn-secondary btn-file">
-                    <%= f.attachment_field :image %>
-                  </div>
-                      <div class="form-group">
-                        <div>
-                           <h5><%= f.label :category, 'カテゴリ' %></h5>
-                           <%= f.collection_select :category_ids, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
-                        </div>
-                        <h5>タイトル</h5>
+                  <p>イメージ画像</p>
+                    <div class="image_wrapper">
+                       <div class="item_image_btn">
+                          <%= f.attachment_field :image, id: "file" %>
+                       </div>
+                       <div id="img_field" onClick="$('#file').click()" >
+                          <p>画像を選択してください</p>
+                       </div>
+                    </div>
+                    <div>
+                        <p>カテゴリー</p>
+                        <%= f.collection_select :category_ids, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+                    </div>
+
+                    <div class="form-group">
+                        <p>タイトル</p>
                         <%= f.text_field :title,size: "20x10",class: "form-control" %>
-                        <h5>内容</h5>
+                        <p>内容</p>
                         <%= f.text_area :body,size: "30x20", class:"form-control" %>
-                      </div>
+                    </div>
                         <br>
                         <%= f.submit "      投稿する     ", class:"btn btn-primary"%>
        <% end %>

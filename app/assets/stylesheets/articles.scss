@@ -34,3 +34,21 @@ select {
 	background-position: right 10px center;
 	background-color: #ffffff;
 }
+
+.item_image_btn{
+    display: none;
+}
+
+#img_field {
+  font-size: 18px;
+  font-style: inherit;
+
+  color: white;
+  background-color: #5bc0de;
+  border-radius: 5px;
+  width: 243px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  top: 10px;
+}
