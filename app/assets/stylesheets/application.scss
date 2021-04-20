@@ -40,7 +40,13 @@ body{
     display: flex;
 }
 
-i:hover, i:focus, i:active {
+.h{
+    color: #fff;
+}
+
+i:hover{
+　display: inline-block;
+  text-decoration: none;
   color: #ff6347 !important;
 
 }

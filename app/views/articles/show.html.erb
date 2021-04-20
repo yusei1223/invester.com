@@ -14,7 +14,7 @@
           <% if @article.user == current_user %>
           <div>
             <%= link_to edit_article_path(@article) do %>
-            <i class="fas fa-wrench fa-2x px-2 edit_article_#{@article.id} fa-2x" style="color:dimgray;"></i>
+            <i class="fas fa-wrench fa-2x pr-2" style="color:dimgray;"></i>
             <% end %>
             <%= link_to article_path(@article), method: :delete, data: { confirm: '本当に消しますか？' } do %>
             <i class="fas fa-trash-alt fa-2x px-2" style="color:dimgray;"></i>
