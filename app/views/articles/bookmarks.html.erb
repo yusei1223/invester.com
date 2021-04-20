@@ -11,10 +11,9 @@
         </div>
         <%end%>
         <div class="col-md-5">
-          <h3><%= bookmark.article.title.truncate(15) %></h3>
+          <h4><%= bookmark.article.title.truncate(15) %></h4>
           <p><%= bookmark.article.body.truncate(200) %></p>
           <p>
-            <br>
             <%= attachment_image_tag bookmark.user, :profile_image, :fill, 60, 60, fallback: "no_image_icon.jpg",size:'60x60',class:"rounded-circle";%>
             <%= bookmark.article.user.nickname %>
           </p>
