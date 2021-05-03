@@ -24,7 +24,7 @@
          <% end %>
   　      <% if current_user != @user %>
          <% if current_user.following?(@user) %>
-         <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "fas fa-user-friends btn btn-secondary" %>
+         <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete,class: "fas fa-user-friends btn btn-dark" %>
          <% else %>
          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "fas fa-user-plus btn btn-outline-secondary" %>
          <% end %>
