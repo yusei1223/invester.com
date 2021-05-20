@@ -8,8 +8,9 @@ class Article < ApplicationRecord
   has_many :article_categories
   has_many :categories, through: :article_categories
   has_many :notifications, dependent: :destroy
+  # validates :category_ids, presence: true
   validates :title, presence: true
-  validates :body, presence: true
+  validates :body, length: { minimum: 100 }
   attachment :image
 
   ransacker :comments_count do

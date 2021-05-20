@@ -2,6 +2,7 @@
   <div class="container col-md-3">
     <div class="row">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 <div class="card p-5">
 <div class="text-center">
  <h2>ログイン</h2>
@@ -13,7 +14,7 @@
   <h5>メールアドレスでログイン</h5>
   <div class="field">
     <font size="2"><%= f.label :'メールアドレスを入力してください'  %></font><br />
-    <%= f.email_field :email,:size=>"30", autofocus: true, autocomplete: "email",:placeholder => "email@invester.com" %>
+    <%= f.email_field :email,:size=>"30", autofocus: true, autocomplete: "email",:placeholder => "email@investor.com" %>
   </div>
 
   <div class="field">

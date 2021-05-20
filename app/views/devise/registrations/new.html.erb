@@ -2,7 +2,6 @@
   <div class="container col-md-3">
      <div class="row">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
 <div class="card pt-5 px-5">
 <p class="text-center">
   <font size="4">ようこそ!  インベスター.comへ</font>
@@ -19,7 +18,7 @@
 
   <div class="field">
     <font size="2"><%= f.label :'メールアドレスを入力してください' %></font><br />
-    <%= f.email_field :email, :size=>"30", autofocus: true, autocomplete: "email", :placeholder => "email@invester.com" %>
+    <%= f.email_field :email, :size=>"30", autofocus: true, autocomplete: "email", :placeholder => "email@investor.com" %>
   </div>
 
   <div class="field">

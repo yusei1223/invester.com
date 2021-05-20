@@ -45,17 +45,6 @@
         <% end %>
       </li>
 
-    <script>$('.js-tooltip').tooltip({ html: true, trigger: 'hover' })</script>
-
-      <li class="nav-item px-3">
-         <div class="menu-featured-categories-container">
-           <div id="menu-featured-categories">
-             <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
-             <%= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>
-             <% end %>
-          </div>
-      </div>
-      </li>
       <li class="dropdown px-3">
         <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span class="caret">
@@ -72,6 +61,17 @@
           </ul>
       </li>
 
+      <script>$('.js-tooltip').tooltip({ html: true, trigger: 'hover' })</script>
+
+      <li class="nav-item px-5">
+         <div class="menu-featured-categories-container">
+           <div id="menu-featured-categories">
+             <%= link_to check_notifications_path, remote: true, class: "menu-item-has-children" do %>
+             <%= render "layouts/notification_button", unchecked_notifications: unchecked_notifications %>
+             <% end %>
+           </div>
+         </div>
+      </li>
     <% else %>
       <li class="nav-item px-2"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %></li>
       <li class="nav-item px-2"><%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %></li>

@@ -1,6 +1,7 @@
  <%#= link_to notifications_path, method: :get do %>
   <!--checked: <%#= unchecked_notifications.any? %>-->
     <div class="red-tip" data-toggle="tooltip" data-html="true" title='<div>
+
             <p>最新の通知は以下の通りです<p>
             <div class="dropdown-divider"></div>
             <% @current_user_notification.each do |notification| %>

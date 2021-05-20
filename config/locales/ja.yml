@@ -6,3 +6,11 @@ ja:
       previous: 前
       next: 次
       truncate: ...
+ja:
+  activerecord:
+    models:
+      article:           
+    attributes:
+      article:           
+        title: タイトル
+        body: 本文

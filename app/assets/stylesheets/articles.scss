@@ -39,6 +39,11 @@ select {
     display: none;
 }
 
+div.field_with_errors {
+background-color: #fcc;
+padding: 2px;
+}
+
 #img_field {
   font-size: 18px;
   font-style: inherit;
